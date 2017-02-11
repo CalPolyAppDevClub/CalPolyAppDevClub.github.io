@@ -3,6 +3,12 @@ var count = 0;
 document.addEventListener('DOMContentLoaded', loadList, false);
 
 function loadList() {
+   listItem = document.getElementById("candidateListItem");
+   while (listItem != null) {
+      listItem.remove();
+      listItem = document.getElementById("candidateListItem");
+   }
+
    $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
       if (data != null) {
          var table = document.getElementById("candidateList");
@@ -14,6 +20,10 @@ function loadList() {
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
+            cell1.id = "candidateListItem";
+            cell2.id = "candidateListItem";
+            cell3.id = "candidateListItem";
+            cell4.id = "candidateListItem";
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].year;
             cell3.innerHTML = data[i].major;
