@@ -1,19 +1,24 @@
 document.addEventListener('DOMContentLoaded', loadList, false);
 
+var count = 0;
+
 function loadList() {
    $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
-      var table = document.getElementById("candidateList");
-      var i;
-      for (i = 0; i < data.length; i++) {
-         var row = table.insertRow(0);
-         var cell1 = row.insertCell(0);
-         var cell2 = row.insertCell(1);
-         var cell3 = row.insertCell(2);
-         var cell4 = row.insertCell(3);
-         cell1.innerHTML = data[i].name;
-         cell2.innerHTML = data[i].year;
-         cell3.innerHTML = data[i].major;
-         cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
+      if (data != null) {
+         var table = document.getElementById("candidateList");
+         count = data.length;
+         var i;
+         for (i = 0; i < data.length; i++) {
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = data[i].name;
+            cell2.innerHTML = data[i].year;
+            cell3.innerHTML = data[i].major;
+            cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
+         }
       }
    });
 }
@@ -27,14 +32,6 @@ function writeCandidateData(candidateID, name, year, major) {
 }
 
 function onSubmitCandidateForm() {
-   var count = 0;
-   $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
-      if (data != null)
-      {
-         count = data.length;
-      }
-   });
-   
    writeCandidateData(toString(count + 1), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
    
    loadList();
