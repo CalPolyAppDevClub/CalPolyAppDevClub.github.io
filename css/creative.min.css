@@ -1,15 +1,9 @@
-Hey,thanks for using DirtyMarkup! I just launched Surreal CMS 5.1,a crazy good hosted CMS with inline editing and tons of other great
-features. Please check it out and give it a share!
-https://www.surrealcms.com/
-Surreal CMS is what keeps my free projects such as DirtyMarkup running!
-Thanks for taking a look!
-� Cory
-(This notice will only appear once)
 /*!
 * Start Bootstrap - Creative v3.3.7+1 (http://startbootstrap.com/template-overviews/creative)
 * Copyright 2013-2016 Start Bootstrap
 * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
-*/.navbar-default,a {
+*/
+.navbar-default,a {
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
 }
@@ -60,6 +54,10 @@ hr {
 
 hr.light {
     border-color: #fff;
+}
+
+hr.dark {
+    border-color: #222;
 }
 
 a {
@@ -257,7 +255,7 @@ header .header-content .header-content-inner h1 {
     margin-top: 10px;
     margin-bottom: 10px;
     white-space: nowrap;
-    font-size: 6vw;
+    font-size: 5vw;
 }
 
 header .header-content .header-content-inner hr {
@@ -301,6 +299,10 @@ header .header-content .header-content-inner p {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+.bg-2 {
+  background-image: url('../img/header2.jpg');
 }
 
 .section-heading {
@@ -479,4 +481,19 @@ img::selection {
 img::-moz-selection {
     color: #fff;
     background: 0 0;
+}
+
+td {
+   width: 25%;
+   height: 50px;
+   border-top: 1px white solid;
+   border-left: 0px;
+   border-right: 0px;
+   border-bottom: 0px;
+}
+
+table {
+   width: 100%;
+   height: 100%;
+   border: 0px;
 }
