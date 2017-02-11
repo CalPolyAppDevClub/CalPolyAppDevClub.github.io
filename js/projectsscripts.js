@@ -24,9 +24,11 @@ function writeCandidateData(candidateID, name, year, major) {
       year: year,
       major: major
    });
+   /*
    firebase.database().ref('count/').set({
       count: (parseInt(candidateID) + 1)
    });
+   */
 }
 
 function onSubmitCandidateForm() {
