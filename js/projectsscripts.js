@@ -25,8 +25,8 @@ function loadList() {
             cell3.id = "candidateListItem";
             cell4.id = "candidateListItem";
             cell1.innerHTML = data[i].name;
-            cell2.innerHTML = data[i].year;
-            cell3.innerHTML = data[i].major;
+            cell2.innerHTML = data[i].major;
+            cell3.innerHTML = data[i].year;
             cell4.innerHTML = data[i].file;
             //cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
          }
