@@ -38,7 +38,7 @@ function onSubmitCandidateForm() {
       count = data[0];
    });
    */
-   writeCandidateData(count + "", document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
+   writeCandidateData(toString(count), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
    
    loadList();
 
