@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', $.loadList, false);
+//document.addEventListener('DOMContentLoaded', $.loadList, false);
+
+jQuery(document).ready(function ($) {
+   $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
+      populate(data);
+   });
+});
 
 $.loadList = function () {
    $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
