@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', loadList, false);
 
 function loadList() {
-   $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
+   getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
       populate(data);
    });
 }
