@@ -24,17 +24,15 @@ function writeCandidateData(candidateID, name, year, major) {
       year: year,
       major: major
    });
-   /*
-   firebase.database().ref('count/').set({
-      num: (parseInt(candidateID) + 1)
-   });
-   */
 }
 
 function onSubmitCandidateForm() {
    var count = 0;
-   $.getJSON("https://polyappdev-projects.firebaseio.com/count.json", function (data) {
-      
+   $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
+      if (data != null)
+      {
+         count = data.length;
+      }
    });
    
    writeCandidateData(toString(count + 1), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
