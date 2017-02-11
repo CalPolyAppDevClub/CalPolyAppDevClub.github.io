@@ -24,21 +24,22 @@ function writeCandidateData(candidateID, name, year, major) {
       year: year,
       major: major
    });
-   /*
    firebase.database().ref('count/').set({
       count: (parseInt(candidateID) + 1)
    });
-   */
 }
 
 function onSubmitCandidateForm() {
    var count = 0;
-   /*
+   
    $.getJSON("https://polyappdev-projects.firebaseio.com/count.json", function (data) {
-      count = data[0];
+      if (count != null)
+      {
+         count = data[0];
+      }
    });
-   */
-   writeCandidateData(toString(count), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
+   
+   writeCandidateData(toString(count + 1), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
    
    loadList();
 
