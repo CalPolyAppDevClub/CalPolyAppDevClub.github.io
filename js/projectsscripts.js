@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', loadList, false);
+document.addEventListener('DOMContentLoaded', $.loadList, false);
 
 $.loadList = function () {
    $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
