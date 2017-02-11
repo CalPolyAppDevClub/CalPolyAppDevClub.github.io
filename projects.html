@@ -186,8 +186,8 @@
                            <br />
                            <row>
                               <label>Resume File</label>
-                              <input type="file" class="form-control" placeholder="Required" id="resume" name="resume"
-                                     required data-validation-required-message="Please select your resume file" />
+                              <input type="file" accept=".pdf" class="form-control" placeholder="Required" id="resume" name="resume"
+                                     required data-validation-required-message="Please select your resume file (PDF)" />
                            </row>
                         </div>
                         <div class="clearfix"></div>
@@ -197,7 +197,7 @@
                            <br />
                            <br />
                            <center>
-                              <button class="btn btn-primary btn-xl sr-button" type="submit">Submit Resume</button>
+                              <button class="btn btn-primary btn-xl sr-button" type="submit" onclick="$(this).loadList()">Submit Resume</button>
                            </center>
                         </div>
                      </div>
