@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', loadList, false);
-
 var count = 0;
+
+document.addEventListener('DOMContentLoaded', loadList, false);
 
 function loadList() {
    $.getJSON("https://polyappdev-projects.firebaseio.com/candidates.json", function (data) {
@@ -23,8 +23,8 @@ function loadList() {
    });
 }
 
-function writeCandidateData(candidateID, name, year, major) {
-   firebase.database().ref('candidates/' + candidateID).set({
+function writeCandidateData(name, year, major) {
+   firebase.database().ref('candidates/' + count).set({
       name: name,
       year: year,
       major: major
@@ -32,7 +32,7 @@ function writeCandidateData(candidateID, name, year, major) {
 }
 
 function onSubmitCandidateForm() {
-   writeCandidateData(toString(count + 1), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
+   writeCandidateData(document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
    
    loadList();
 
