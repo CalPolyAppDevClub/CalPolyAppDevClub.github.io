@@ -27,7 +27,8 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].year;
             cell3.innerHTML = data[i].major;
-            cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
+            cell4.innerHTML = data[i].file;
+            //cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
          }
       }
    });
