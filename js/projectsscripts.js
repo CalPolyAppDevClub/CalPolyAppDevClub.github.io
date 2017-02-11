@@ -7,7 +7,6 @@ function loadList() {
 }
 
 function populate(data) {
-   /*
    var table = document.getElementById("candidateList");
    var i;
    for (i = 0; i < data.length; i++) {
@@ -22,7 +21,6 @@ function populate(data) {
       cell3.innerHTML = data[i].getElementById("major");
       cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
    }
-   */
 }
 
 function writeCandidateData(candidateID, name, year, major) {
