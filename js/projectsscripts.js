@@ -32,11 +32,11 @@ function writeCandidateData(candidateID, name, year, major) {
 }
 
 function onSubmitCandidateForm() {
-   var count;
+   var count = 1;
    $.getJSON("https://polyappdev-projects.firebaseio.com/count.json", function (data) {
-      count = data.num;
+      count = parseInt(data.num);
    });
-
+   
    writeCandidateData(toString(count + 1), document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
    
    loadList();
