@@ -28,10 +28,6 @@ function loadList() {
    });
 }
 
-function populate(data) {
-   
-}
-
 function writeCandidateData(candidateID, name, year, major) {
    firebase.database().ref('candidates/' + candidateID).set({
       name: name,
@@ -41,7 +37,7 @@ function writeCandidateData(candidateID, name, year, major) {
 }
 
 function onSubmitCandidateForm() {
-   writeCandidateData(1, document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
+   writeCandidateData(0, document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
    
    loadList();
 
