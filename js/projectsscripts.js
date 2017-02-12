@@ -13,8 +13,8 @@ function loadList() {
       if (data != null) {
          var table = document.getElementById("candidateList");
          count = data.length;
-         var i;
-         for (i = 0; i < data.length; i++) {
+         var i = 0;
+         var loopArray = function (data) {
             var row = table.insertRow(0);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -27,14 +27,25 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-            var resumeURL;
-            firebase.storage().ref(data[i].resumeTimestamp).getDownloadURL().then(function (url) {
-               resumeURL = url;
+            fillCell4(data[i], cell4, function () {
+               i++;
+               if (i < data.length) {
+                  loopArray(data);
+               }
             });
-            cell4.innerHTML = "<td><a href=" + resumeURL + " class='btn'>Download Resume</a></td>";
          }
+         loopArray(data);
       }
    });
+}
+
+function fillCell4(candidateData, cell4, callback) {
+   firebase.storage().ref(candidateData.resumeTimestamp).getDownloadURL().then(function (url) {
+      while (cell4.innerHTML == "") {
+         cell4.innerHTML = "<td><a href=" + url + " class='btn'>Download Resume</a></td>";
+      }
+   });
+   callback();
 }
 
 function writeCandidateData(name, major, year, timestamp) {
@@ -71,7 +82,8 @@ function onSubmitCandidateForm() {
    cell1.innerHTML = document.getElementById("name").value;
    cell2.innerHTML = document.getElementById("major").value;
    cell3.innerHTML = document.getElementById("year").value;
-   cell4.innerHTML = "<td><a href='javascript:window.location.href=window.location.href' class='btn'>Refresh for Link</a></td>";
+   cell4.innerHTML = "<td><a class='btn'>Uploading...</a></td>";
+   //cell4.innerHTML = "<td><a href='javascript:window.location.href=window.location.href' class='btn'>Refresh for Link</a></td>";
 
    document.getElementById('submit').scrollIntoView();
    
