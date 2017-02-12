@@ -8,10 +8,10 @@ form.addEventListener('submit', function (event) {
    var $ = jQuery;
    var file_data = $('#uploadResume').prop('files')[0];
 
-   storageRef.put(file_data);
+   storageRef.put(file_data);/*
    firebase.database().ref('candidates/' + count).set({
       resume: file_data
-   });
+   });*/
 });
 
 var count = 0;
