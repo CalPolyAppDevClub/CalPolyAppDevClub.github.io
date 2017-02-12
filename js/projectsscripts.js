@@ -27,22 +27,18 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-
-            var timestamp = Number(data[i].resume);
-            var storageRef = firebase.storage().ref(timestamp.toString());
-
-            cell4.innerHTML = "<td><a href=" + storageRef.getDownloadURL() + " class='btn'>Download Resume</a></td>";
+            cell4.innerHTML = "<td><a href=" + firebase.storage().ref(data[i].resumeTimestamp).getDownloadURL() + " class='btn'>Download Resume</a></td>";
          }
       }
    });
 }
 
-function writeCandidateData(name, major, year, resume) {
+function writeCandidateData(name, major, year, timestamp) {
    firebase.database().ref('candidates/' + count).set({
       name: name,
       year: year,
       major: major,
-      resume: resume
+      resumeTimestamp: timestamp
    });
 }
 
@@ -56,7 +52,7 @@ function onSubmitCandidateForm() {
    storageRef.put(file_data);
    
    writeCandidateData(document.getElementById("name").value, document.getElementById("major").value,
-      document.getElementById("year").value, storageRef.getDownloadURL());
+      document.getElementById("year").value, timestamp.toString());
    
    var table = document.getElementById("candidateList");
    var row = table.insertRow(0);
