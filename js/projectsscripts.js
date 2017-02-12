@@ -9,6 +9,9 @@ form.addEventListener('submit', function (event) {
    var file_data = $('#uploadResume').prop('files')[0];
 
    storageRef.put(file_data);
+   firebase.database().ref('candidates/' + count).set({
+      resume: file_data
+   });
 });
 
 var count = 0;
@@ -40,12 +43,8 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-
-            // GET DOWNLOAD LINK
-            //var url = firebase.storage().ref.child('file').getDownloadURL();
-
-            cell4.innerHTML = "<td><a href='DOWNLOAD LINK' class='btn'>Download Resume</a></td>";
-            
+            var url = firebase.storage().ref.child(data[i].resume).getDownloadURL();
+            cell4.innerHTML = "<td><a href=" + url + " class='btn'>Download Resume</a></td>";
          }
       }
    });
@@ -62,10 +61,6 @@ function writeCandidateData(name, major, year) {
 function onSubmitCandidateForm() {
    writeCandidateData(document.getElementById("name").value, document.getElementById("major").value, document.getElementById("year").value);
    
-
-
-
-
    var table = document.getElementById("candidateList");
    var row = table.insertRow(0);
    var cell1 = row.insertCell(0);
@@ -79,11 +74,7 @@ function onSubmitCandidateForm() {
    cell1.innerHTML = document.getElementById("name").value;
    cell2.innerHTML = document.getElementById("major").value;
    cell3.innerHTML = document.getElementById("year").value;
-   /* GET DOWNLOAD LINK
-   
-
-   cell4.innerHTML = "<td><a href='GET DOWNLOAD LINK' class='btn'>Download Resume</a></td>";
-   */
+   cell4.innerHTML = "<td><a href='javascript:window.location.href=window.location.href' class='btn'>Refresh for Link</a></td>";
 
    document.getElementById('submit').scrollIntoView();
    
