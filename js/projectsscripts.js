@@ -27,9 +27,11 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
+            var resumeURL;
             firebase.storage().ref(data[i].resumeTimestamp).getDownloadURL().then(function (url) {
-               cell4.innerHTML = "<td><a href=" + url + " class='btn'>Download Resume</a></td>";
+               resumeURL = url;
             });
+            cell4.innerHTML = "<td><a href=" + resumeURL + " class='btn'>Download Resume</a></td>";
          }
       }
    });
