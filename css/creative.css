@@ -48,6 +48,9 @@ a:hover,
 a:focus {
   color: #387B38;
 }
+b {
+   color: rgba(255,255,255,.7);
+}
 h1,
 h2,
 h3,
@@ -449,6 +452,14 @@ fieldset[disabled] .btn-primary.active {
   font-weight: 700;
   text-transform: uppercase;
 }
+.disabledBtn {
+   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+   border: none;
+   border-radius: 300px;
+   font-weight: 700;
+   text-transform: uppercase;
+   padding-left: 12px;
+}
 .btn-xl {
   padding: 15px 30px;
 }
@@ -474,9 +485,13 @@ body {
   webkit-tap-highlight-color: #222222;
 }
 td {
+   font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
    width: 25%;
    height: 50px;
    border: 3px 0px 0px 0px white solid;
+}
+th {
+   font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
 }
 table {
    width: 100%;

@@ -46,6 +46,15 @@ body {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
+.disabledBtn {
+   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+   border: none;
+   border-radius: 300px;
+   font-weight: 700;
+   text-transform: uppercase;
+   padding-left: 12px;
+}
+
 hr {
     border-color: #387B38;
     border-width: 3px;
@@ -67,6 +76,10 @@ a {
 
 a:focus,a:hover {
     color: #387B38;
+}
+
+b {
+   color: rgba(255,255,255,.7);
 }
 
 p {
@@ -484,12 +497,17 @@ img::-moz-selection {
 }
 
 td {
+   font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
    width: 25%;
    height: 50px;
    border-top: 1px white solid;
    border-left: 0px;
    border-right: 0px;
    border-bottom: 0px;
+}
+
+th {
+   font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
 }
 
 table {
