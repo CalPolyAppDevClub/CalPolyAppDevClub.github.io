@@ -1,16 +1,17 @@
-var count = 0;
-
 var form = document.querySelector('#candidateForm');
 form.addEventListener('submit', function (event) {
    event.preventDefault();
 
-var timestamp = Number(new Date());
-var storageRef = firebase.storage().ref(timestamp.toString());
+   var timestamp = Number(new Date());
+   var storageRef = firebase.storage().ref(timestamp.toString());
 
-var $ = jQuery;
-var file_data = $('#uploadResume').prop('files')[0];
+   var $ = jQuery;
+   var file_data = $('#uploadResume').prop('files')[0];
 
-storageRef.put(file_data);
+   storageRef.put(file_data);
+});
+
+var count = 0;
 
 document.addEventListener('DOMContentLoaded', loadList, false);
 
