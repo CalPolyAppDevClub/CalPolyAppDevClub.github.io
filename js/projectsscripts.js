@@ -1,5 +1,17 @@
 var count = 0;
 
+var form = document.querySelector('#candidateForm');
+form.addEventListener('submit', function (event) {
+   event.preventDefault();
+
+var timestamp = Number(new Date());
+var storageRef = firebase.storage().ref(timestamp.toString());
+
+var $ = jQuery;
+var file_data = $('#uploadResume').prop('files')[0];
+
+storageRef.put(file_data);
+
 document.addEventListener('DOMContentLoaded', loadList, false);
 
 function loadList() {
@@ -27,14 +39,18 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-            cell4.innerHTML = data[i].file;
-            //cell4.innerHTML = "<td><a href='#' class='btn'>Download Resume</a></td>";
+
+            // GET DOWNLOAD LINK
+            //var url = firebase.storage().ref.child('file').getDownloadURL();
+
+            cell4.innerHTML = "<td><a href='DOWNLOAD LINK' class='btn'>Download Resume</a></td>";
+            
          }
       }
    });
 }
 
-function writeCandidateData(name, year, major) {
+function writeCandidateData(name, major, year) {
    firebase.database().ref('candidates/' + count).set({
       name: name,
       year: year,
@@ -43,9 +59,30 @@ function writeCandidateData(name, year, major) {
 }
 
 function onSubmitCandidateForm() {
-   writeCandidateData(document.getElementById("name").value, document.getElementById("year").value, document.getElementById("major").value);
+   writeCandidateData(document.getElementById("name").value, document.getElementById("major").value, document.getElementById("year").value);
    
-   loadList();
+
+
+
+
+   var table = document.getElementById("candidateList");
+   var row = table.insertRow(0);
+   var cell1 = row.insertCell(0);
+   var cell2 = row.insertCell(1);
+   var cell3 = row.insertCell(2);
+   var cell4 = row.insertCell(3);
+   cell1.id = "candidateListItem";
+   cell2.id = "candidateListItem";
+   cell3.id = "candidateListItem";
+   cell4.id = "candidateListItem";
+   cell1.innerHTML = document.getElementById("name").value;
+   cell2.innerHTML = document.getElementById("major").value;
+   cell3.innerHTML = document.getElementById("year").value;
+   /* GET DOWNLOAD LINK
+   
+
+   cell4.innerHTML = "<td><a href='GET DOWNLOAD LINK' class='btn'>Download Resume</a></td>";
+   */
 
    document.getElementById('submit').scrollIntoView();
    
