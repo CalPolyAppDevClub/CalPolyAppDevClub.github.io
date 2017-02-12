@@ -8,10 +8,6 @@ form.addEventListener('submit', function (event) {
    var $ = jQuery;
    var file_data = $('#uploadResume').prop('files')[0];
 
-   firebase.database().ref('candidates/' + count).set({
-      resume: storageRef.getDownloadURL()
-   });
-
    storageRef.put(file_data);
 });
 
@@ -50,16 +46,17 @@ function loadList() {
    });
 }
 
-function writeCandidateData(name, major, year) {
+function writeCandidateData(name, major, year, resume) {
    firebase.database().ref('candidates/' + count).set({
       name: name,
       year: year,
-      major: major
+      major: major,
+      resume: resume
    });
 }
 
 function onSubmitCandidateForm() {
-   writeCandidateData(document.getElementById("name").value, document.getElementById("major").value, document.getElementById("year").value);
+   writeCandidateData(document.getElementById("name").value, document.getElementById("major").value, document.getElementById("year").value, storageRef.getDownloadURL());
    
    var table = document.getElementById("candidateList");
    var row = table.insertRow(0);
