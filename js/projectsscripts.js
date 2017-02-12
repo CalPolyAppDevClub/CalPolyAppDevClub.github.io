@@ -26,7 +26,7 @@ function loadList() {
             cell4.id = "candidateListItem";
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
-            cell3.innerHTML = data[i].year;
+            cell3.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + data[i].year;
             fillCell4(data[i], cell4, function () {
                i++;
                if (i < data.length) {
@@ -81,7 +81,7 @@ function onSubmitCandidateForm() {
    cell4.id = "candidateListItem";
    cell1.innerHTML = document.getElementById("name").value;
    cell2.innerHTML = document.getElementById("major").value;
-   cell3.innerHTML = document.getElementById("year").value;
+   cell3.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + document.getElementById("year").value;
    cell4.innerHTML = "<td><b class='disabledBtn'>Uploading...</b></td>";
    
    // Listen for state changes, errors, and completion of the upload.
