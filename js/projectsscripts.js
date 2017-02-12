@@ -27,7 +27,9 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-            cell4.innerHTML = "<td><a href=" + firebase.storage().ref(data[i].resumeTimestamp).getDownloadURL() + " class='btn'>Download Resume</a></td>";
+            firebase.storage().ref(data[i].resumeTimestamp).getDownloadURL().then(function (url) {
+               cell4.innerHTML = "<td><a href=" + url + " class='btn'>Download Resume</a></td>";
+            });
          }
       }
    });
