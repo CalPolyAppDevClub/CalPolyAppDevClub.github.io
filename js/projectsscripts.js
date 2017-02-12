@@ -8,10 +8,10 @@ form.addEventListener('submit', function (event) {
    var $ = jQuery;
    var file_data = $('#uploadResume').prop('files')[0];
 
-   storageRef.put(file_data);/*
+   storageRef.put(file_data);
    firebase.database().ref('candidates/' + count).set({
-      resume: file_data
-   });*/
+      resume: storageRef.getDownloadURL()
+   });
 });
 
 var count = 0;
@@ -43,8 +43,7 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-            var url = firebase.storage().ref.child(data[i].resume).getDownloadURL();
-            cell4.innerHTML = "<td><a href=" + url + " class='btn'>Download Resume</a></td>";
+            cell4.innerHTML = "<td><a href=" + data[i].resume + " class='btn'>Download Resume</a></td>";
          }
       }
    });
