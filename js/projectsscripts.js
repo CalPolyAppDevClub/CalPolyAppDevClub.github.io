@@ -1,20 +1,3 @@
-var form = document.querySelector('#candidateForm');
-form.addEventListener('submit', function (event) {
-   event.preventDefault();
-
-   var timestamp = Number(new Date());
-   var storageRef = firebase.storage().ref(timestamp.toString());
-
-   var $ = jQuery;
-   var file_data = $('#uploadResume').prop('files')[0];
-
-   storageRef.put(file_data);
-
-   firebase.database().ref('candidates/' + count).set({
-      resume: storageRef.getDownloadURL()
-   });
-});
-
 var count = 0;
 
 document.addEventListener('DOMContentLoaded', loadList, false);
@@ -44,22 +27,36 @@ function loadList() {
             cell1.innerHTML = data[i].name;
             cell2.innerHTML = data[i].major;
             cell3.innerHTML = data[i].year;
-            cell4.innerHTML = "<td><a href=" + data[i].resume + " class='btn'>Download Resume</a></td>";
+
+            var timestamp = Number(data[i].resume);
+            var storageRef = firebase.storage().ref(timestamp.toString());
+
+            cell4.innerHTML = "<td><a href=" + storageRef.getDownloadURL() + " class='btn'>Download Resume</a></td>";
          }
       }
    });
 }
 
-function writeCandidateData(name, major, year) {
+function writeCandidateData(name, major, year, resume) {
    firebase.database().ref('candidates/' + count).set({
       name: name,
       year: year,
-      major: major
+      major: major,
+      resume: resume
    });
 }
 
 function onSubmitCandidateForm() {
-   writeCandidateData(document.getElementById("name").value, document.getElementById("major").value, document.getElementById("year").value);
+   var date = new Date();
+   var timestamp = Number(date);
+   var storageRef = firebase.storage().ref(timestamp.toString());
+   var $ = jQuery;
+   var file_data = $('#uploadResume').prop('files')[0];
+
+   storageRef.put(file_data);
+   
+   writeCandidateData(document.getElementById("name").value, document.getElementById("major").value,
+      document.getElementById("year").value, storageRef.getDownloadURL());
    
    var table = document.getElementById("candidateList");
    var row = table.insertRow(0);
