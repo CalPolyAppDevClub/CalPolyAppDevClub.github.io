@@ -63,8 +63,8 @@ function onSubmitCandidateForm() {
    var storageRef = firebase.storage().ref(timestamp.toString());
    var $ = jQuery;
    var file_data = $('#uploadResume').prop('files')[0];
-
-   storageRef.put(file_data);
+   
+   var uploadTask = storageRef.put(file_data);
    
    writeCandidateData(document.getElementById("name").value, document.getElementById("major").value,
       document.getElementById("year").value, timestamp.toString());
@@ -82,9 +82,38 @@ function onSubmitCandidateForm() {
    cell1.innerHTML = document.getElementById("name").value;
    cell2.innerHTML = document.getElementById("major").value;
    cell3.innerHTML = document.getElementById("year").value;
-   cell4.innerHTML = "<td><a class='btn'>Uploading...</a></td>";
-   //cell4.innerHTML = "<td><a href='javascript:window.location.href=window.location.href' class='btn'>Refresh for Link</a></td>";
+   cell4.innerHTML = "<td><b class='disabledBtn'>Uploading...</b></td>";
+   
+   // Listen for state changes, errors, and completion of the upload.
+   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+         case firebase.storage.TaskState.PAUSED:
+            console.log('Upload is paused');
+            break;
+         case firebase.storage.TaskState.RUNNING:
+            console.log('Upload is running');
+            break;
+      }
+   }, function (error) {
+      switch (error.code) {
+         case 'storage/unauthorized':
+            // User doesn't have permission to access the object
+            break;
 
+         case 'storage/canceled':
+            // User canceled the upload
+            break;
+
+         case 'storage/unknown':
+            // Unknown error occurred, inspect error.serverResponse
+            break;
+      }
+   }, function () {
+      cell4.innerHTML = "<td><a href=" + uploadTask.snapshot.downloadURL + " class='btn' >Download Resume</a ></td > ";
+   });
+   
    document.getElementById('submit').scrollIntoView();
    
    $('html, body').animate({
