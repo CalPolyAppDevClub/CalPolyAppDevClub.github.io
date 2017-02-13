@@ -100,14 +100,17 @@ function onSubmitCandidateForm() {
       switch (error.code) {
          case 'storage/unauthorized':
             // User doesn't have permission to access the object
+            alert("There seems to have been an error: the user doesn't have permission to access the object. Please contact us at calpolyappdev@gmail.com to resolve this issue.");
             break;
 
          case 'storage/canceled':
             // User canceled the upload
+            alert("There seems to have been an error: the user canceled the upload. Please contact us at calpolyappdev@gmail.com to resolve this issue.");
             break;
 
          case 'storage/unknown':
             // Unknown error occurred, inspect error.serverResponse
+            alert("There seems to have been an error: unknown error with the server. Please contact us at calpolyappdev@gmail.com to resolve this issue.");
             break;
       }
    }, function () {
@@ -119,6 +122,8 @@ function onSubmitCandidateForm() {
    $('html, body').animate({
       scrollTop: $("#candidates").offset().top
    }, 1500, 'easeInOutExpo');
+
+   $("#candidateForm").trigger('reset');
 
    return false;
 }
