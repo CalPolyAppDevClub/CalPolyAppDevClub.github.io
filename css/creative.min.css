@@ -123,6 +123,19 @@ p {
     color: rgba(255,255,255,.7);
 }
 
+.bg-transparent-3 {
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url(../img/header2.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: rgba(255,255,255,.7);
+}
+
 .img-custom {
     max-height: 100%;
     width: 25%;
@@ -498,7 +511,6 @@ img::-moz-selection {
 
 td {
    font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
-   width: 25%;
    height: 50px;
    border-top: 1px white solid;
    border-left: 0px;
