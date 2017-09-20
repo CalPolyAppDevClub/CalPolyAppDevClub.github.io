@@ -105,18 +105,78 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-               <center>
-                  <img class="img-custom" src="img/logo_medium.png" alt="">
-               </center>
                <br />
-               <h1 id="homeHeading">Your ideas.</h1>
-               <h1 id="homeHeading">Our community.</h1>
-               <br />
-               <a href="#signup" class="btn btn-primary btn-xl page-scroll">Sign up for our mailing list</a>
+			   <h1 id="homeHeading" style="color:gold">Fall Kickoff Event</h1>
+               <h1 id="homeHeading" style="color:gold">Countdown:</h1>
+			   <br />
+				<!-- Display the countdown timer in an element -->
+				<h1 id="timer" style="color:white"></h1>
+
+				<script>
+				// Set the date we're counting down to
+				var countDownDate = new Date("Sept 21, 2017 18:00:00").getTime();
+
+				// Update the count down every 1 second
+				var x = setInterval(function() {
+
+					// Get todays date and time
+					var now = new Date().getTime();
+
+					// Find the distance between now an the count down date
+					var distance = countDownDate - now;
+
+					// Time calculations for days, hours, minutes and seconds
+					var hours = Math.floor((distance) / (1000 * 60 * 60));
+					var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+					var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+               var hoursString = "";
+               if (hours < 10)
+               {
+                  hoursString = "0" + hours;
+               }
+               else
+               {
+                  hoursString = hours;
+               }
+
+               var minutesString = "";
+               if (minutes < 10)
+               {
+                  minutesString = "0" + minutes;
+               }
+               else
+               {
+                  minutesString = minutes;
+               }
+
+               var secondsString = "";
+               if (seconds < 10)
+               {
+                  secondsString = "0" + seconds;
+               }
+               else
+               {
+                  secondsString = seconds;
+               }
+
+					// Display the result in the element with id="timer"
+					document.getElementById("timer").innerHTML = hoursString + ":" + minutesString + ":" + secondsString;
+
+					// If the count down is finished, write some text 
+					if (distance < 0)
+               {
+					   clearInterval(x);
+					   document.getElementById("timer").innerHTML = "RIGHT NOW";
+					}
+				}, 1000);
+				</script>
+			   <br />
+			   <h2 style="color:lightgrey">Thursday (Sept 21), 6-8pm</h2>
+			   <h2 style="color:lightgrey">Bonderson 104</h2>
+			   <br />
+			   <br />
             </div>
-           <br />
-           <br />
-           <br />
            <center>
               <a class="btn btn-primary" href="https://www.facebook.com/groups/polyappdev/"><i class="fa fa-4x fa-facebook-square" style="color:white"></i></a>
               <a>&nbsp;&nbsp;&nbsp;</a>
@@ -416,65 +476,51 @@
          <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                <div class="service-box">
-                  <i class="fa fa-4x fa-internet-explorer text-primary sr-icons"></i>
-                  <h3>Joel Braun</h3>
+                  <i class="fa fa-4x fa-users text-primary sr-icons"></i>
+                  <h3>Eric Babajanian</h3>
+                  <p class="text-muted">Communications Officer</p>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+               <div class="service-box">
+                  <i class="fa fa-4x fa-user-circle text-primary sr-icons"></i>
+                  <h3>Joe Durand</h3>
                   <p class="text-muted">President</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                <div class="service-box">
-                  <i class="fa fa-4x fa-area-chart text-primary sr-icons"></i>
-                  <h3>Charnpreet Singh</h3>
-                  <p class="text-muted">VP of Operations</p>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-               <div class="service-box">
-                  <i class="fa fa-4x fa-android text-primary sr-icons"></i>
-                  <h3>Kris Campos</h3>
-                  <p class="text-muted">VP of Corporate Relations</p>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-               <div class="service-box">
-                  <i class="fa fa-4x fa-apple text-primary sr-icons"></i>
-                  <h3>Joe Durand</h3>
-                  <p class="text-muted">Projects Manager</p>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-               <div class="service-box">
                   <i class="fa fa-4x fa-money text-primary sr-icons"></i>
-                  <h3>Michael Le</h3>
+                  <h3>Ivonne Guzmann</h3>
                   <p class="text-muted">Treasurer</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                <div class="service-box">
-                  <i class="fa fa-4x fa-camera text-primary sr-icons"></i>
-                  <h3>Kyle Kurashima</h3>
-                  <p class="text-muted">Secretary</p>
+                  <i class="fa fa-4x fa-address-book-o text-primary sr-icons"></i>
+                  <h3>Erick Harris</h3>
+                  <p class="text-muted">Corporate Relations Officer</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                <div class="service-box">
-                  <i class="fa fa-4x fa-motorcycle text-primary sr-icons"></i>
+                  <i class="fa fa-4x fa-globe text-primary sr-icons"></i>
                   <h3>Namjoon Joo</h3>
                   <p class="text-muted">Webmaster</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                <div class="service-box">
-                  <i class="fa fa-4x fa-globe text-primary sr-icons"></i>
-                  <h3>Rutu Samai</h3>
-                  <p class="text-muted">Community Director</p>
+                  <i class="fa fa-4x fa-book text-primary sr-icons"></i>
+                  <h3>James Kao</h3>
+                  <p class="text-muted">Education Officer</p>
                </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                <div class="service-box">
-                  <i class="fa fa-4x fa-phone text-primary sr-icons"></i>
-                  <h3>Ty Farris</h3>
-                  <p class="text-muted">Communications Director</p>
+                  <i class="fa fa-4x fa-user-o text-primary sr-icons"></i>
+                  <h3>Charnpreet Singh</h3>
+                  <p class="text-muted">Vice President</p>
                </div>
             </div>
          </div>
